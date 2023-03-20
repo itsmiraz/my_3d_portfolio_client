@@ -10,9 +10,12 @@ import { fadeIn, textVariant } from "../utils/motion";
 import ProjectCard from "./ProjectCard/ProjectCard";
 
 const Works = () => {
+
+const [viewMore,setViewMore] = useState(3)
+
   return (
     <>
-      <motion.div id="works" variants={textVariant()}>
+      <motion.div id="works">
         <p className={`${styles.sectionSubText} `}>My work</p>
         <div className="relative h-full text-gray-500 my-2 py-2 ">
           <div className="absolute">
@@ -36,7 +39,7 @@ const Works = () => {
 
       <div className="w-full flex">
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+        
           className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
         >
           Following projects showcases my skills and experience through
@@ -48,7 +51,7 @@ const Works = () => {
       </div>
 
       <div className="mt-20 grid  md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-7">
-        {projects.map((project, index) => (
+        {projects.slice(0,viewMore).map((project, index) => (
           <ProjectCard
             project={project}
             index={index}
@@ -56,6 +59,17 @@ const Works = () => {
           ></ProjectCard>
         ))}
       </div>
+
+      <div className="flex justify-center my-6">
+        {
+          viewMore === 9 ?
+          <button onClick={()=>setViewMore(viewMore-3)} className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500">View Less</button>
+          :
+          <button onClick={()=>setViewMore(viewMore+3)} className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500">View More</button>
+            
+}
+      </div>
+      
     </>
   );
 };
