@@ -14,12 +14,12 @@ const Hero = () => {
     >
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className=" rounded-2xl pl-0 md:py-0 py-10 md:pl-10 select-none"
+        className=" rounded-2xl pl-0 md:py-0 py-10  select-none"
       >
         <h1 className="text-4xl md:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-bold">
           Hello World!
         </h1>
-        <h1 className="text-8xl md:text-9xl font-bold my-2">
+        <h1 className="text-8xl md:text-8xl font-bold my-2">
           I'm <span className="text-violet-500">Miraj</span>
         </h1>
         <div className="relative  ">

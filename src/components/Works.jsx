@@ -1,17 +1,12 @@
 import React, { useState } from "react";
-import Tilt from "react-tilt";
 import { motion } from "framer-motion";
-
 import { styles } from "../styles";
-import { github } from "../assets";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
 import ProjectCard from "./ProjectCard/ProjectCard";
 
 const Works = () => {
-
-const [viewMore,setViewMore] = useState(3)
+  const [viewMore, setViewMore] = useState(3);
 
   return (
     <>
@@ -38,10 +33,7 @@ const [viewMore,setViewMore] = useState(3)
       </motion.div>
 
       <div className="w-full flex">
-        <motion.p
-        
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
-        >
+        <motion.p className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
           Following projects showcases my skills and experience through
           real-world examples of my work. Each project is briefly described with
           links to code repositories and live demos in it. It reflects my
@@ -51,7 +43,7 @@ const [viewMore,setViewMore] = useState(3)
       </div>
 
       <div className="mt-20 grid  md:grid-cols-2 grid-cols-1 lg:grid-cols-3 gap-7">
-        {projects.slice(0,viewMore).map((project, index) => (
+        {projects.slice(0, viewMore).map((project, index) => (
           <ProjectCard
             project={project}
             index={index}
@@ -61,15 +53,22 @@ const [viewMore,setViewMore] = useState(3)
       </div>
 
       <div className="flex justify-center my-6">
-        {
-          viewMore === 9 ?
-          <button onClick={()=>setViewMore(viewMore-3)} className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500">View Less</button>
-          :
-          <button onClick={()=>setViewMore(viewMore+3)} className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500">View More</button>
-            
-}
+        {viewMore === 9 ? (
+          <button
+            onClick={() => setViewMore(viewMore - 3)}
+            className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500"
+          >
+            View Less
+          </button>
+        ) : (
+          <button
+            onClick={() => setViewMore(viewMore + 3)}
+            className="px-4 py-2 rounded-lg bg-gradient-to-r from-sky-500 to-indigo-500"
+          >
+            View More
+          </button>
+        )}
       </div>
-      
     </>
   );
 };

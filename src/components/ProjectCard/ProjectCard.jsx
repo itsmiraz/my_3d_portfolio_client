@@ -8,7 +8,11 @@ const ProjectCard = ({ project, index }) => {
     project;
 
   return (
-    <motion.div >
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, delay: index * 0.1 }}
+    >
       <Tilt
         options={{
           max: 45,
@@ -26,13 +30,13 @@ const ProjectCard = ({ project, index }) => {
         </div>
         <div className=" bg-gray-800 mt-2 p-2 rounded-lg">
           <h1 className="text-2xl font-semibold ">{title}</h1>
-                  <p className="text-sm my-2">{details.slice(0, 100)}..</p>
-                  <div className="space-x-3 text-xs">
-                  <span className="text-blue-500">#react</span>
-                  <span className="text-green-500">#mongo</span>
-                  <span className="text-purple-500">#node</span>
-                  <span className="text-white-500">#express</span>
-               </div>
+          <p className="text-sm my-2">{details.slice(0, 100)}..</p>
+          <div className="space-x-3 text-xs">
+            <span className="text-blue-500">#react</span>
+            <span className="text-green-500">#mongo</span>
+            <span className="text-purple-500">#node</span>
+            <span className="text-white-500">#express</span>
+          </div>
         </div>
 
         <div className="absolute left-2 top-2 flex justify-end m-4 card-img_hover">
