@@ -8,6 +8,7 @@ import Hero from "./components/Hero";
 import Tech from "./components/Tech";
 import Works from "./components/Works";
 import Navbar from "./components/Navbar";
+import { Toaster } from "react-hot-toast";
 function App() {
   return (
     <BrowserRouter>
@@ -26,6 +27,7 @@ function App() {
       </div>
         <Contact />
       </div>
+      <Toaster/>
     </BrowserRouter>
   );
 }

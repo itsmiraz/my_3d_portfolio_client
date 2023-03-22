@@ -6,14 +6,14 @@ import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { toast } from "react-hot-toast";
 
 const Contact = () => {
   const form = useRef();
-
+  const [send, setsend] = useState(false);
   const sendEmail = e => {
     e.preventDefault();
-   
-
+    setsend(true);
     const forme = e.target;
     emailjs
       .sendForm(
@@ -26,6 +26,7 @@ const Contact = () => {
         result => {
           toast.success("Email Sent");
           forme.reset();
+          setsend(false);
         },
         error => {
           console.log(error.text);
@@ -45,28 +46,34 @@ const Contact = () => {
         <p className={styles.sectionSubText}>Get in touch</p>
         <div className="relative  text-gray-500 my-4 py-2 ">
           <div className="absolute">
-            <p className="text-xs"> <span>{'<'}</span> h1  <span>{'>'}</span> </p>
+            <p className="text-xs">
+              {" "}
+              <span>{"<"}</span> h1 <span>{">"}</span>{" "}
+            </p>
             <div className="h-16 w-[1px] left-1 top-0 bg-gray-600"></div>
-            <p className="text-xs"><span>{'<'}</span> h1  <span>{'/>'}</span></p>
+            <p className="text-xs">
+              <span>{"<"}</span> h1 <span>{"/>"}</span>
+            </p>
           </div>
 
           <div className="p-3">
-          <h2 className="bg-clip-text text-6xl font-bold  text-transparent bg-gradient-to-r from-pink-500 to-violet-500">Contact.</h2>
-         </div>
+            <h2 className="bg-clip-text text-6xl font-bold  text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
+              Contact.
+            </h2>
+          </div>
         </div>
         <p className="w-full  ">
-              Feel free to send me any message about me or wanna hire me or need
-              any help in your project. I will reply you as soon as possible.
-              Please enter a valid emal so that I can contact you.{" "}
-            </p>
-     
+          Feel free to send me any message about me or wanna hire me or need any
+          help in your project. I will reply you as soon as possible. Please
+          enter a valid emal so that I can contact you.{" "}
+        </p>
       </motion.div>
 
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className="xl:flex-1 p-5  md:pr-10 xl:h-auto md:h-[550px] h-[350px]"
       >
-       <form
+        <form
           ref={form}
           onSubmit={sendEmail}
           className="  relative z-20 text-white flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"
@@ -95,7 +102,7 @@ const Contact = () => {
                     required
                     name="user_email"
                     id="username"
-                    type="text"
+                    type="email"
                     placeholder="Your Email"
                     className="w-full bg-gray-700 focus:outline-none  text-gray-100 rounded py-2 px-2"
                   />
@@ -115,13 +122,21 @@ const Contact = () => {
               </div>
               <div className="col-span-full">
                 <div className="flex items-center space-x-2">
-                  <button
-                    type="submit"
-                    value="Send"
-                    className="px-4 py-1 font-semibold my-2 rounded bg-gray-800 text-white"
-                  >
-                    Send
-                  </button>
+                  {send ? (
+                    <>
+                      <p    className="px-4 py-1 font-semibold my-2 rounded bg-gray-800 text-white">Sending</p>
+                    </>
+                  ) : (
+                    <>
+                      <button
+                        type="submit"
+                        value="Send"
+                        className="px-4 py-1 font-semibold my-2 rounded bg-gray-800 text-white"
+                      >
+                        Send
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
