@@ -7,6 +7,7 @@ import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 
 const Hero = () => {
+  const [show, setshow] = useState(false);
   return (
     <div
       id="#"
@@ -22,12 +23,20 @@ const Hero = () => {
         <h1 className="text-8xl md:text-8xl font-bold my-2">
           I'm <span className="text-violet-500">Miraj</span>
         </h1>
-        <div className="relative  ">
-          <h1 className="text-xl pl-3 relative z-50 font-semibold">
+        <div
+          onMouseEnter={() => setshow(true)}
+          onMouseLeave={() => setshow(false)}
+          className="relative  "
+        >
+          <h1 className="text-xl mt-4  pl-3 relative z-50 font-semibold">
             {" "}
             Passoniate Developer from Bangladesh
           </h1>
-          <div className="absolute h-full duration-200 ease-in-out  w-1 hover:w-32 z-40  bg-pink-500   top-0 left-0"></div>
+          <div
+            className={`absolute h-full duration-300 ease-in-out  ${
+              show ? "w-full" : "w-1"
+            } hover:w-32 z-40  bg-pink-500   top-0 left-0`}
+          ></div>
         </div>
       </motion.div>
       <div className="absolute  hidden xs:bottom-10 bottom-0 w-full lg:flex justify-center items-center">
@@ -119,7 +128,7 @@ const Hero = () => {
         </div>
       </div>
       <motion.div
-         variants={slideIn("right", "tween", 0.2, 1)}
+        variants={slideIn("right", "tween", 0.2, 1)}
         className=" rounded-2xl lg:block hidden w-full h-[400px] md:h-[500px]"
       >
         <EarthCanvas />
